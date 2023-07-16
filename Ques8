@@ -1,0 +1,13 @@
+[{
+  $unwind: "$grades"
+},
+ {
+   $group:{
+     _id: "$restaurant_id",
+     averageGrade: {$avg: "$grades.score"}
+   }
+ },{
+   $sort: {averageGrade: -1}
+ },{
+   $limit: 5
+ }]
