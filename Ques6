@@ -1,0 +1,16 @@
+[{
+  $match:{
+    "address.market": "Porto"
+  }
+},
+ {
+   $group: {
+     _id: null,
+     avragePrice: {$avg: "$price"}
+   }
+ },{
+   $project:{
+     _id: 0
+}
+ }
+]
