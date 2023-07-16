@@ -1,0 +1,12 @@
+[{
+  $unwind: "$countries"
+},{
+  $group:{
+    _id: null,
+    uniqueCountries: {$addToSet: "$countries"}
+  }
+},{
+  $project:{
+    _id: 0, uniqueCountries: 1
+  }
+}]
