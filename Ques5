@@ -1,0 +1,15 @@
+[{
+  $group: {
+    _id: "$movie_id",
+    num: {$count: {}}
+  }
+},{
+  $sort: {num: -1}
+},{
+  $lookup:{
+    from: "movies",
+    localField: "movie_id",
+    foreignField: "_id",
+    as: "movie_details"
+  }
+}]
